@@ -1,0 +1,40 @@
+#+AUTHOR: Cody Reichert
+#+EMAIL: codyreichert@gmail.com
+#+TITLE: wp-readme-mode
+
+This package provides syntax highlighting for WordPress flavored
+markdown.  It's close to Markdown, but has quite a few major
+differences that make standard markdown syntax highlighters
+unusable. The major mode `wp-readme-mode' provides full syntax
+highlighting for WP readme.txt's, which are usually in WordPress
+plugins and themes.
+
+An example of this markdown can be found here:
+https://wordpress.org/plugins/about/readme.txt
+
+Submit issues at https://github.com/CodyReichert/wp-readme-mode
+
+
+** Installation
+   Clone this repo and add the directory to your Emacs load path:
+
+   #+BEGIN_SRC elisp
+       (add-to-list 'load-path "/path/to/this/clone/")
+       (require 'wp-readme)
+   #+END_SRC
+
+   And that's it. Open up a =readme.txt= and enable wp-readme-mode
+   (=M-x wp-readme-mode RET=).
+
+
+** License
+   This program is free software: you can redistribute it and/or
+   modify it under the terms of the GNU General Public License as
+   published by the Free Software Foundation, either version 3 of the
+   License, or (at your option) any later version.  This program is
+   distributed in the hope that it will be useful, but WITHOUT ANY
+   WARRANTY; without even the implied warranty of MERCHANTABILITY or
+   FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public
+   License for more details.  You should have received a copy of the
+   GNU General Public License along with this program. If not, see
+   http://www.gnu.org/licenses/
