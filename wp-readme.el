@@ -1,6 +1,6 @@
 ;;; wp-readme.el --- A major mode for editing WordPress style markdown.
 ;;
-;; Copyright (C) 2014 Cody Reichert
+;; Copyright (C) 2015 Cody Reichert
 ;;
 ;; Author: Cody Reichert
 ;; URL: http://github.com/CodyReichert/wp-readme.el
@@ -9,15 +9,28 @@
 ;;
 ;; This program is free software; you can redistribute it and/or
 ;; modify it under the terms of the GNU General Public License as
-;; published by the Free Software Foundation; either version 3 of
-;; the License, or (at your option) any later version.
+;; published by the Free Software Foundation; either version 3 of the
+;; License, or (at your option) any later version.
 ;;
-;; This program is distributed in the hope that it will be
-;; useful, but WITHOUT ANY WARRANTY; without even the implied
-;; warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
-;; PURPOSE.  See the GNU General Public License for more details.
-;;
+;; This program is distributed in the hope that it will be useful, but
+;; WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+;; General Public License for more details.
+
 ;;; Commentary:
+
+;; This package provides syntax highlighting for WordPress flavored
+;; markdown.  It's close to Markdown, but has quite a few major
+;; differences that make standard markdown syntax highlighters
+;; unusable. The major mode `wp-readme-mode' provides full syntax
+;; highlighting for WP readme.txt's, which are usually in WordPress
+;; plugins and themes.
+;;
+;; An example of this markdown can be found here:
+;; https://wordpress.org/plugins/about/readme.txt
+;;
+;; Submit issues at https://github.com/CodyReichert/wp-readme.el
+;; or email me directly at codyreichert@gmail.com.
 
 ;;; Code:
 
@@ -28,7 +41,7 @@
 
 (defgroup wp-readme nil
   "Major mode group for Wordpress style markdown."
-  :prefix "wp-reamde-"
+  :prefix "wp-readme-"
   :group 'wp)
 
 
@@ -155,7 +168,7 @@
   "Required key/value items in the header (value)."
   :group 'wp-readme-faces)
 
-;; "^\\(Author:\\|Contributors:\\|Tags:\\).*$"
+
 (defvar wp-readme-font-lock-keywords
   (list
    '("^===\\(.*?\\)===" . wp-readme-header-one-face)
@@ -177,6 +190,7 @@
   "Font lock keywords for wp-readme-mode.")
 
 
+;;;###autoload
 (define-derived-mode wp-readme-mode text-mode "wp-readme"
   "A major mode for editing Wordpress style markdown
 \\{wp-readme-mode-map}"
@@ -186,4 +200,3 @@
 
 (provide 'wp-readme)
 ;;; wp-readme.el ends here
-
