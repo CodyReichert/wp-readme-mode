@@ -120,7 +120,7 @@
 
 (defface wp-readme-bold-face
   '((t (:inherit font-lock-variable-name-face :weight bold)))
-  "Font face for italic text."
+  "Font face for bold text."
   :group 'wp-readme-faces)
 
 (defface wp-readme-italic-face
