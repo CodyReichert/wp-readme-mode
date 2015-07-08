@@ -50,18 +50,44 @@
   :group 'wp-readme
   :group 'faces)
 
-
 (defvar wp-readme-header-one-face 'wp-readme-header-one-face
-  "First level header font lock name.")
+  "First level header font face name.")
 
 (defvar wp-readme-header-two-face 'wp-readme-header-two-face
-  "Second level header font lock name.")
+  "Second level header font face name.")
 
 (defvar wp-readme-header-three-face 'wp-readme-header-three-face
-  "Third level header font lock name.")
+  "Third level header font face name.")
+
+(defvar wp-readme-bold-face 'wp-readme-bold-face
+  "Bold font face name.")
 
 (defvar wp-readme-italic-face 'wp-readme-italic-face
-  "Italic face name.")
+  "Italic font face name.")
+
+(defvar wp-readme-inline-code-face 'wp-readme-inline-code-face
+  "Inline code snippet font face name.")
+
+(defvar wp-readme-hyperlink-face 'wp-readme-hyperlink-face
+  "Hyperlink font face name.")
+
+(defvar wp-readme-hyperlink-text-face 'wp-readme-hyperlink-face
+  "Hyperlink text description font face name.")
+
+(defvar wp-readme-unordered-list-item-face 'wp-readme-unordered-list-item-face
+  "Unordered list item font face.")
+
+(defvar wp-readme-ordered-list-item-face 'wp-readme-ordered-list-item-face
+  "Ordered list item font face.")
+
+(defvar wp-readme-blockquote-face 'wp-readme-blockquote-face
+  "Blockquote font face.")
+
+(defvar wp-readme-required-heading-key-face 'wp-readme-required-heading-value-face
+  "Required key/value heading items.")
+
+(defvar wp-readme-required-heading-value-face 'wp-readme-required-heading-key-face
+  "Required key/value heading items.")
 
 
 (defface wp-readme-header-one-face
@@ -79,18 +105,74 @@
   "Font face for level 3 headers."
   :group 'wp-readme-faces)
 
+(defface wp-readme-bold-face
+  '((t (:inherit font-lock-variable-name-face :weight bold)))
+  "Font face for italic text."
+  :group 'wp-readme-faces)
+
 (defface wp-readme-italic-face
   '((t (:inherit font-lock-variable-name-face :slant italic)))
   "Font face for italic text."
   :group 'wp-readme-faces)
 
+(defface wp-readme-inline-code-face
+  '((t (:inherit font-lock-constant-face)))
+  "Font face for inline code."
+  :group 'wp-readme-faces)
 
+(defface wp-readme-hyperlink-face
+  '((t (:inherit font-lock-variable-face :underline t)))
+  "Font face for hyperlinks."
+  :group 'wp-readme-faces)
+
+(defface wp-readme-hyperlink-text-face
+  '((t (:inherit font-lock-variable-face :underline t)))
+  "Font face for hyperlink text description."
+  :group 'wp-readme-faces)
+
+(defface wp-readme-unordered-list-item-face
+  '((t (:inherit font-lock-keyword-face :weight bold)))
+  "Font face for unordered list items."
+  :group 'wp-readme-faces)
+
+(defface wp-readme-ordered-list-item-face
+  '((t (:inherit font-lock-keyword-face :weight bold)))
+  "Font face for ordered list numbers."
+  :group 'wp-readme-faces)
+
+(defface wp-readme-blockquote-face
+  '((t (:inherit font-lock-function-name-face :slant italic)))
+  "Font face for blockquotes."
+  :group 'wp-readme-faces)
+
+(defface wp-readme-required-heading-key-face
+  '((t (:inherit font-lock-variable-name-face)))
+  "Required items in the header (key)."
+  :group 'wp-readme-faces)
+
+(defface wp-readme-required-heading-value-face
+  '((t (:inherit font-lock-string-face)))
+  "Required key/value items in the header (value)."
+  :group 'wp-readme-faces)
+
+;; "^\\(Author:\\|Contributors:\\|Tags:\\).*$"
 (defvar wp-readme-font-lock-keywords
   (list
    '("^===\\(.*?\\)===" . wp-readme-header-one-face)
    '("^==\\(.*?\\)==" . wp-readme-header-two-face)
    '("^=\\(.*?\\)=" . wp-readme-header-three-face)
+   '("\\*\\*\\(.*?\\)\\*\\*" . wp-readme-bold-face)
    '("\\*\\(.*?\\)\\*" . wp-readme-italic-face)
+   '("`\\(.*?\\)`" . wp-readme-inline-code-face)
+   '("\\(\\[.*?]\\)\\((.*?)\\)"
+     (1 'wp-readme-hyperlink-text-face)
+     (2 'wp-readme-hyperlink-face))
+   '("^\\([0-9]\\.?\\).*?$" (1 'wp-readme-ordered-list-item-face))
+   '("^\\(\\*\\).*?$" (1 'wp-readme-unordered-list-item-face))
+   '("^\\(>\\).*?$" (1 'wp-readme-blockquote-face))
+   '("^\\(Author:\\|Contributors:\\|Donate Link:\\|Tags:\\|Requires at least:\\|Tested up to:\\|Stable tag:\\|License:\\|License URI:\\)\\(.*?\\)$"
+     (1 'wp-readme-required-heading-key-face)
+     (2 'wp-readme-required-heading-value-face))
    )
   "Font lock keywords for wp-readme-mode.")
 
